@@ -15,6 +15,7 @@ import java.io.IOException;
 public class AuthenticationEntryPointHandler extends BasicAuthenticationEntryPoint {
     @Override
     public void afterPropertiesSet() {
+        setRealmName("Hospital_management");
         super.afterPropertiesSet();
     }
 

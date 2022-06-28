@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 
-@ControllerAdvice(basePackages = "com.kamildeen.hospitalmanagement.infrastructure.web.controllers")
+@ControllerAdvice(basePackages = "com.kamildeen.hospitalmanagement.infrastructure.controllers")
 public class GlobalErrorHandler {
 
     @ExceptionHandler(value = {RuntimeException.class, Exception.class})

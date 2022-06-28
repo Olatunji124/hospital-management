@@ -7,6 +7,7 @@ import com.kamildeen.hospitalmanagement.infrastructure.persistence.repositories.
 import com.kamildeen.hospitalmanagement.usecases.StaffManagementService;
 import com.kamildeen.hospitalmanagement.infrastructure.model.response.UpdateStaffResponse;
 import com.kamildeen.hospitalmanagement.usecases.exceptions.BadRequestException;
+import com.kamildeen.hospitalmanagement.usecases.exceptions.BusinessLogicConflictException;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class StaffManagementServiceImpl implements StaffManagementService {
         }
         Optional<StaffEntity> staffEntityOptional = repository.findByNameAndRecordStatus(name, RecordStatusConstant.ACTIVE);
         if (staffEntityOptional.isPresent()) {
-            throw new RuntimeException("Staff has been registered already.");
+            throw new BusinessLogicConflictException("Staff has been registered already.");
         }
         String uuid = UUID.randomUUID().toString();
         StaffEntity staff = StaffEntity.builder()
